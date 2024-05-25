@@ -1,3 +1,5 @@
+package week2day2;
+
 public class Student {
     private final String name;
     private int id;

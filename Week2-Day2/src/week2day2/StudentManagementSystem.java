@@ -1,18 +1,24 @@
+package week2day2;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import week2day2.Student;
 public class StudentManagementSystem {
     private final int maxCntStudent;
-    private final ArrayList<Integer> studentIdList = new ArrayList<>();
+    private final Map<Integer,Student> students = new HashMap<Integer,Student>();
 
     StudentManagementSystem(int maxCntStudent) {
         this.maxCntStudent = maxCntStudent;
     }
 
     public void addStudent(Student student) {
-        if(this.studentIdList.contains(student.getId())){
+        if(this.students.containsKey(student.getId())){
             System.out.println("이미 등록된 학번의 학생 입니다."+student.getId());
         }else {
-            if (studentIdList.size() < this.getMaxCntStudent()) {
-                this.studentIdList.add(student.getId());
+            if (students.size() < this.getMaxCntStudent()) {
+                this.students.put(student.getId(),student);
                 System.out.println("학생 추가 :" + student.getName());
             } else {
                 System.out.println("최대 정원 " + this.getMaxCntStudent() + " 명의 학생이 등록되어 있습니다.");
@@ -21,8 +27,8 @@ public class StudentManagementSystem {
     }
 
     public void removeStudent(Student student) {
-        if(this.studentIdList.contains(student.getId())){
-            this.getStudentIdList().remove(Integer.valueOf(student.getId()));
+        if(this.students.containsKey(student.getId())){
+            this.students.remove(Integer.valueOf(student.getId()));
             System.out.println("학생 삭제 : "+student.getName());
         }else {
             System.out.println("학생을 찾을 수 없습니다. 학번 : "+student.getId());
@@ -30,8 +36,12 @@ public class StudentManagementSystem {
     }
 
     public void searchStudent(int studentId) {
-        if(this.getStudentIdList().contains(studentId)){
-            System.out.println("존재하는 학생 입니다. 학번 : "+studentId);
+        if(this.students.containsKey(studentId)){
+            Student st1 = this.students.get(studentId);
+            System.out.println("이름 : "+st1.getName());
+            System.out.println("학번 : "+st1.getId());
+            System.out.println("전공 : "+st1.getMajor());
+            System.out.println("학년 : "+st1.getGrade());
         }else {
             System.out.println("학생을 찾을 수 없습니다. 학번 : "+studentId);
         }
@@ -42,7 +52,4 @@ public class StudentManagementSystem {
         return maxCntStudent;
     }
 
-    public ArrayList<Integer> getStudentIdList() {
-        return studentIdList;
-    }
 }
