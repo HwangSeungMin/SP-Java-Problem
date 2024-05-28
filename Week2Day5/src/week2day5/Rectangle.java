@@ -16,7 +16,6 @@ class Rectangle extends Shape {
     }
 
     public void printRectangleInfo() {
-        super.printInfo();
         System.out.println("사각형의 가로길이:"+this.width);
         System.out.println("사각형의 세로길이:"+this.height);
     }
@@ -38,6 +37,7 @@ class Rectangle extends Shape {
        return Math.sqrt(this.width*this.width +this.height*this.height);
     }
 
+    @Override
     public double calculatePerimeter(){
         return 2*this.width+2*this.height;
     }
