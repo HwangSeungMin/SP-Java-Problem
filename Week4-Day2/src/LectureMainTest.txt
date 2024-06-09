@@ -1,0 +1,33 @@
+public class Main {
+    public static void main(String[] args) {
+        // 유틸리티 클래스
+//        String str = "Hello World";
+//        char target = 'o';
+//
+//        System.out.println(StringUtils.reverse(str));
+//        System.out.println(StringUtils.CharChecker.countChar(str,target));
+//        System.out.println(StringUtils.CharChecker.containsChar(str,target));
+//        System.out.println(StringUtils.isEmpty(str));
+
+        class LocalWalk implements Walkable{
+            @Override
+            public void walk() {
+                System.out.println("Walking...");
+            }
+        }
+
+        LocalWalk localWalk = new LocalWalk();
+        localWalk.walk();
+
+        int i = 100;
+
+        Walkable anonymousWalkable = new Walkable() {
+            @Override
+            public void walk() {
+                System.out.println(i); // Read 만 가능 변경 불가
+                System.out.println("anonymous Walking...");
+            }
+        };
+        anonymousWalkable.walk();
+    }
+}
