@@ -14,11 +14,11 @@ public class LambdaTest1 {
 
         StringNum sn1 = (x,y)->System.out.println(x);
         StringNum sn2 = (x,y)->{
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
             for(int i=0;i<y;i++){
                 sb.append(x);
             }
-            System.out.println(sb.toString());
+            System.out.println("sb : "+sb.toString());
         };
         StringNum sn3 = (String x,int y)->{
             for(int i=0;i<y;i++){
