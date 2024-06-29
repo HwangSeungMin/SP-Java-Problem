@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sample Page</title>
+</head>
+<body>
+<h1>Sample Data</h1>
+<div>
+    <div th:each="data:${dataList}" >
+        <p th:text="${data.id + ': '+ data.name}"></p>
+    </div>
+    <div th:if="${dataList.size()==0}">
+        <p>No Data Available.</p>
+    </div>
+</div>
+</body>
+</html>
